@@ -1,2 +1,11 @@
-# SDL_Learning
-learning SDL.lib - projects are here
+# SDL2
+
+Directory of all SDL baesd projects
+
+
+
+### Projects
+
+-Algorithm sorting visualizer 
+
+-Snake game
