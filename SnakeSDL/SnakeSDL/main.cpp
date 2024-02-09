@@ -26,13 +26,18 @@ int main()
 
 	//candy
 	std::vector<SDL_Rect> candies;
-
 	for (int i = 0; i < 50; i++)//gen candy @ random 
 	{
 		candies.emplace_back(rand() % 100 * 10, rand() % 100 * 10, 10, 10);
 		if (i <= 19)	//testing if doing this will recreate an apple when one is eaten - if not i will create a seperate loop that checks for a decrease in apples every 5s
 			i++;
-	}			
+	}
+	std::vector<SDL_Rect> sizer;
+	for (int a = 0; a < 4; a++)
+	{
+		sizer.emplace_back(rand() % 100 * 10, rand() % 100 * 10, 10, 10);
+	}
+		
 
 	bool running = true;
 	int dir = 0;
@@ -77,7 +82,18 @@ int main()
 				}
 			});
 
-		//check for collison [self]
+		//check for collision [power]
+		std::for_each(sizer.begin(), sizer.end(), [&](auto& sizes)
+			{
+				if (head.x == sizes.x && head.y == sizes.y)
+				{
+					size += 5;
+					sizes.x = -10;
+					sizes.y = -10;
+				}
+			});
+
+		//check for collison [power]
 		std::for_each(rq.begin(), rq.end(), [&](auto& snake_part)
 			{
 				if (head.x == snake_part.x && head.y == snake_part.y)
@@ -114,6 +130,12 @@ int main()
 		std::for_each(candies.begin(), candies.end(), [&](auto& candy)
 			{
 				SDL_RenderFillRect(renderer, &candy);
+			});
+
+		SDL_SetRenderDrawColor(renderer, 30, 100, 200, 255);
+		std::for_each(sizer.begin(), sizer.end(), [&](auto& sizes)
+			{
+				SDL_RenderFillRect(renderer, &sizes);
 			});
 
 

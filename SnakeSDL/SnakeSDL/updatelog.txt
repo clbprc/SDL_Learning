@@ -1,1 +1,2 @@
 9/2 - Created
+10/2 - added "powers" (blue increases size by 10)
