@@ -1,0 +1,2 @@
+read and write from and to a file.  (choose 'map' size, amount of candies, snake speed)
+add abilities (special candies [diff color] which enable you to not lose size for 5s, speed boost for 3s, eat all apples in 5m radius)
